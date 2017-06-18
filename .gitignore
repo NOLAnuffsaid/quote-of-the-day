@@ -34,3 +34,10 @@ local.properties
 .loadpath
 .recommenders
 .classpath
+
+
+build/*
+node_modules/*
+.babelrc
+package-lock.json
+
