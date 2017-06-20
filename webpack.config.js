@@ -4,7 +4,7 @@
 const resolve =  require('path').resolve
 
 const SRC_DIR = resolve(__dirname, 'src')
-const ENV = process.env.NODE_ENV
+const ENV = process.env.NODE_ENV || 'prod'
 
 module.exports = {
   entry: {
