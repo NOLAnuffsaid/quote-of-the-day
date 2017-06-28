@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "ignore": ["test/end-to-end/", "node_modules/"],
+  "watch": ["./src/**/*.js", "./test/**/*.jsx", "./**/*.json"]
+}

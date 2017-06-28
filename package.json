@@ -14,16 +14,20 @@
   },
   "homepage": "https://github.com/NOLAnuffsaid/gsquote-of-the-day#readme",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --reporter dot",
-    "test:watch": "npm test --watch",
-    "build": "./node_modules/.bin/webpack --progress --watch",
-    "server": "node server.js",
-    "server:dev": "concurrently \"npm run build\" \"npm run server\""
+    "start": "node server.js",
+    "test": "NODE_ENV=test nodemon --delay 3 --exec \"npm run mocha\"",
+    "mocha": "npm run build && ./node_modules/mocha/bin/mocha ./test/**/*.spec.js --watch --recursive --reporter spec",
+    "e2e": "SELENIUM_PROMISE_MANAGER=1 ./node_modules/mocha/bin/mocha ./test/end-to-end/**.e2e.* --reporter spec ./test/end-to-end",
+    "build": "./node_modules/.bin/webpack --progress",
+    "server": "npm run build && npm start",
+    "server:e2e": "NODE_ENV=test npm run server",
+    "server:dev": "NODE_ENV=dev npm run server"
   },
   "dependencies": {
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "immutable": "^3.8.1",
+    "nodemon": "^1.11.0",
     "prop-types": "^15.5.10",
     "ramda": "^0.24.1",
     "react": "^15.6.0",
@@ -34,14 +38,31 @@
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.0.2",
     "concurrently": "^3.4.0",
     "enzyme": "^2.8.2",
     "mocha": "^3.4.2",
+    "selenium-webdriver": "^3.4.0",
+    "sinon": "^2.3.5",
     "webpack": "^2.6.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-3",
+      "react"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "add-module-exports"
+        ]
+      }
+    }
   }
 }
