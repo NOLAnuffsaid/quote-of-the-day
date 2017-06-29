@@ -2,9 +2,7 @@
  * Created by widner on 6/17/17.
  */
 const resolve =  require('path').resolve
-
-const SRC_DIR = resolve(__dirname, 'src')
-const ENV = process.env.NODE_ENV || 'prod'
+const {BUILD_DIR, SRC_DIR, ENV} = require('./src/constants/serverConstants')
 
 module.exports = {
   entry: {
@@ -12,7 +10,7 @@ module.exports = {
     vendors: ['react', 'react-dom', 'redux', 'react-redux', 'prop-types',  'ramda', 'immutable']
   },
   output: {
-    path: resolve(__dirname, 'build'), /*Replace with a path*/
+    path: BUILD_DIR, /*Replace with a path*/
     //publicPath: '', /*Replace with a path*/
     filename: ENV + '_build-' + Date.now().toString() + '-[name].js' /*Replace with a filename*/
   },
