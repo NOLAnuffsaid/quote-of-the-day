@@ -40,4 +40,5 @@ build/*
 node_modules/*
 .babelrc
 package-lock.json
+certs/
 

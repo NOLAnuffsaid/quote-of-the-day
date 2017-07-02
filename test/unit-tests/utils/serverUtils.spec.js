@@ -3,7 +3,6 @@
  */
 var mocha = require('mocha')
 var chai = require('chai')
-var sinon = require('sinon')
 var {readdirSync: readDir} = require('fs')
 var events = require('events')
 var {exec} = require('child_process')
